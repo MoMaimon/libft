@@ -6,7 +6,7 @@
 /*   By: mabd-elh <mabd-elh@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:16:43 by mabd-elh          #+#    #+#             */
-/*   Updated: 2026/09/23 12:33:12 by mabd-elh         ###   ########.fr       */
+/*   Updated: 2026/09/23 14:40:19 by mabd-elh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
+void	*ft_memchr(const void *s, int c, size_t n);
+char	*ft_strrchr(const char *s, int c);
 #endif
