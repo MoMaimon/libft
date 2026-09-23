@@ -6,7 +6,7 @@
 /*   By: mabd-elh <mabd-elh@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:01:54 by mabd-elh          #+#    #+#             */
-/*   Updated: 2026/09/23 12:57:08 by mabd-elh         ###   ########.fr       */
+/*   Updated: 2026/09/23 14:18:06 by mabd-elh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	char	buffer[1000];
+	long	overlap;
+	int		i;
 
-	i = 0;
-	while (i < n)
+	overlap = (long) dest - (long) src;
+	if (overlap > 0 && overlap < (int) n)
 	{
-		buffer[i] = ((char *) src)[i];
-		i++;
+		i = n - 1;
+		while (i >= 0)
+		{
+			((char *) dest)[i] = ((char *) src)[i];
+			i--;
+		}
 	}
-	i = 0;
-	while (i < n)
-	{
-		((char *) dest)[i] = buffer[i];
-		i++;
-	}
+	else
+		ft_memcpy(dest, src, n);
 	return (dest);
 }
