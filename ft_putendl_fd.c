@@ -6,7 +6,7 @@
 /*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/27 18:48:49 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/27 18:50:41 by mabd-elh        ###   ########.fr        */
+/*   Updated: 2026/09/27 18:51:42 by mabd-elh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,4 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
-}
-
-int	main(void)
-{
-	ft_putendl_fd("Hello world!", 1);
 }
