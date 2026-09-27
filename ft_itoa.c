@@ -1,38 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   ft_strtrim.c                                      :+:      :+:    :+:    */
+/*   ft_itoa.c                                         :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/27 13:26:27 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/27 14:46:50 by mabd-elh        ###   ########.fr        */
+/*   Created: 2026/09/27 16:38:46 by mabd-elh         #+#    #+#              */
+/*   Updated: 2026/09/27 17:08:36 by mabd-elh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_inset(char c, char const *set)
+static int	ilen(int n)
 {
-	if (ft_strchr(set, c))
-		return (1);
-	else
-		return (0);
+	int	len;
+
+	len = 1;
+	while (n / 10)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_itoa(int n)
 {
-	int		left;
-	int		right;
+	int		len;
 	char	*str;
+	long	temp;
 
-	left = 0;
-	right = ft_strlen(s1) - 1;
-	while (s1[left] && is_inset(s1[left], set))
-		left++;
-	while (right >= left && is_inset(s1[right], set))
-		right--;
-	str = malloc(right - left + 2);
-	ft_strlcpy(str, &s1[left], right - left + 2);
+	temp = n;
+	len = ilen(temp);
+	if (n < 0)
+	{
+		len++;
+		temp *= -1;
+	}
+	str = malloc((len + 1) * sizeof(char));
+	str[len] = '\0';
+	while (temp / 10)
+	{
+		str[len - 1] = (temp % 10) + '0';
+		temp /= 10;
+		len--;
+	}
+	str[--len] = (temp % 10) + '0';
+	if (n < 0)
+		str[0] = '-';
 	return (str);
 }
