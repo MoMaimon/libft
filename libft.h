@@ -6,7 +6,7 @@
 /*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/23 12:16:43 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/26 21:19:35 by mabd-elh        ###   ########.fr        */
+/*   Updated: 2026/09/27 13:15:44 by mabd-elh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 #endif

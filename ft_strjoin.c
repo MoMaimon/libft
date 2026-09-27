@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   ft_substr.c                                       :+:      :+:    :+:    */
+/*   ft_strjoin.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/26 21:19:05 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/27 13:18:19 by mabd-elh        ###   ########.fr        */
+/*   Created: 2026/09/27 13:14:13 by mabd-elh         #+#    #+#              */
+/*   Updated: 2026/09/27 13:24:47 by mabd-elh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	min(int num1, int num2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (num1 < num2)
-		return (num1);
-	return (num2);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
 	char	*str;
-	size_t	min_len;
+	int		i;
+	int		s1_len;
+	int		s2_len;
 
 	i = 0;
-	if (start <= (size_t) ft_strlen(s))
-		min_len = min(len, ft_strlen(&s[start]));
-	else
-		min_len = 0;
-	str = malloc((min_len + 1) * sizeof(char));
-	if (!str)
-		return (0);
-	while (i < min_len && s[i])
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	str = malloc((s1_len + s2_len + 1) * sizeof(char));
+	while (i < s1_len)
 	{
-		str[i] = s[start];
+		str[i] = s1[i];
 		i++;
-		start++;
 	}
-	str[i] = '\0';
+	i = 0;
+	while (i < s2_len)
+	{
+		str[i + s1_len] = s2[i];
+		i++;
+	}
+	str[i + s1_len] = '\0';
 	return (str);
 }
