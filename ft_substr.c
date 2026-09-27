@@ -6,7 +6,7 @@
 /*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/26 21:19:05 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/26 21:54:57 by mabd-elh        ###   ########.fr        */
+/*   Updated: 2026/09/27 13:09:07 by mabd-elh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	min_len;
 
 	i = 0;
-	min_len = min(len, ft_strlen(&s[start]));
+	if (start <= (size_t) ft_strlen(s))
+		min_len = min(len, ft_strlen(&s[start]));
+	else
+		min_len = 0;
 	str = calloc(min_len + 1, sizeof(char));
 	if (!str)
 		return (0);
@@ -38,13 +41,4 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	char	*s = ft_substr("tripouille", 100, 1);
-
-	printf("%s", s);
 }
