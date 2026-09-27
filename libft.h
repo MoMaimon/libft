@@ -6,7 +6,7 @@
 /*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/23 12:16:43 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/27 18:24:17 by mabd-elh        ###   ########.fr        */
+/*   Updated: 2026/09/27 18:34:39 by mabd-elh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 #endif
