@@ -6,11 +6,13 @@
 /*   By: mabd-elh <mabd-elh@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:09:37 by mabd-elh          #+#    #+#             */
-/*   Updated: 2026/09/23 12:54:10 by mabd-elh         ###   ########.fr       */
+/*   Updated: 2026/09/28 13:29:23 by mabd-elh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
