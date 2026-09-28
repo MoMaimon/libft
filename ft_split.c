@@ -6,7 +6,7 @@
 /*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/09/27 13:52:21 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/27 16:21:07 by mabd-elh        ###   ########.fr        */
+/*   Updated: 2026/09/28 16:48:39 by mabd-elh        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ static int	count_words(const char *str, char c)
 	return (words);
 }
 
-static int	word_len(const char *left, const char *right)
-{
-	int	len;
-
-	len = (long) right - (long) left;
-	return (len);
-}
-
 static char	*get_word(char *s, char c)
 {
 	char	*sep;
@@ -47,30 +39,59 @@ static char	*get_word(char *s, char c)
 
 	sep = ft_strchr(s, c);
 	if (sep)
-		len = word_len(s, sep) + 1;
+		len = (long) sep - (long) s + 1;
 	else
 		len = ft_strlen(s) + 1;
 	str = malloc(len * sizeof(char));
+	if (!str)
+	{
+		free(str);
+		return (0);
+	}
 	ft_strlcpy(str, s, len);
 	return (str);
 }
 
-static void	make_arr(char **arr, char *s, char c)
+static int	make_arr(char **arr, char *s, char c)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*temp_str;
 
 	i = 0;
 	j = 0;
 	if (s[i])
-		arr[j++] = get_word(&s[i++], c);
-	while (s[i])
 	{
-		if (s[i] != c && s[i - 1] == c)
-			arr[j++] = get_word(&s[i], c);
-		i++;
+		temp_str = get_word(&s[i++], c);
+		if (!temp_str)
+			return (0);
+		arr[j++] = temp_str;
+	}
+	while (s[i++])
+	{
+		if (s[i - 1] != c && s[(i - 1) - 1] == c)
+		{
+			temp_str = get_word(&s[i - 1], c);
+			if (!temp_str)
+				return (0);
+			arr[j++] = temp_str;
+		}
 	}
 	arr[j] = 0;
+	return (1);
+}
+
+static void	free_all(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
 
 char	**ft_split(char const *s, char c)
@@ -85,7 +106,17 @@ char	**ft_split(char const *s, char c)
 	trimmed_str = ft_strtrim(s, set);
 	words = count_words(trimmed_str, c);
 	arr = malloc((words + 1) * sizeof(char *));
-	make_arr(arr, trimmed_str, c);
+	if (!arr)
+	{
+		free(arr);
+		return (0);
+	}
+	if (!make_arr(arr, trimmed_str, c))
+	{
+		free_all(arr);
+		free(trimmed_str);
+		return (0);
+	}
 	free(trimmed_str);
 	return (arr);
 }
