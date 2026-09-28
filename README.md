@@ -1,10 +1,10 @@
 *This project has been created as part of the 42 curriculum by mabd-elh.*
 
 ## Description
-This project is a replacment of standard library with additional functions, it will be used for feature 42 projects.
+This project is a replacement of standard library with additional functions, it will be used for feature 42 projects.
 
 ## Instructions
-- Clone the repositry into your device
+- Clone the repository into your device
 ``` bash
 git clone https://github.com/MoMaimon/libft.git libft
 ```
