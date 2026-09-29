@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   ft_lstnew.c                                       :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/27 19:01:59 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/27 20:41:16 by mabd-elh        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabd-elh <mabd-elh@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/27 19:01:59 by mabd-elh          #+#    #+#             */
+/*   Updated: 2026/09/28 21:17:17 by mabd-elh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_list	*ft_lstnew(void *content)
 
 	node = malloc(sizeof(t_list));
 	if (!node)
-		return (node);
+		return (NULL);
 	node->content = content;
-	node->next = 0;
+	node->next = NULL;
 	return (node);
 }

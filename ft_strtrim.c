@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   ft_strtrim.c                                      :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/27 13:26:27 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/27 14:46:50 by mabd-elh        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabd-elh <mabd-elh@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/27 13:26:27 by mabd-elh          #+#    #+#             */
+/*   Updated: 2026/09/29 04:36:20 by mabd-elh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*str;
 
 	left = 0;
+	if (!s1 || !set)
+		return (NULL);
 	right = ft_strlen(s1) - 1;
 	while (s1[left] && is_inset(s1[left], set))
 		left++;
 	while (right >= left && is_inset(s1[right], set))
 		right--;
 	str = malloc(right - left + 2);
+	if (!str)
+		return (NULL);
 	ft_strlcpy(str, &s1[left], right - left + 2);
 	return (str);
 }

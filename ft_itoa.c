@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   ft_itoa.c                                         :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/27 16:38:46 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/27 17:08:36 by mabd-elh        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabd-elh <mabd-elh@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/27 16:38:46 by mabd-elh          #+#    #+#             */
+/*   Updated: 2026/09/28 20:36:16 by mabd-elh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*ft_itoa(int n)
 		temp *= -1;
 	}
 	str = malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
 	str[len] = '\0';
 	while (temp / 10)
 	{
@@ -46,7 +48,7 @@ char	*ft_itoa(int n)
 		temp /= 10;
 		len--;
 	}
-	str[--len] = (temp % 10) + '0';
+	str[len - 1] = (temp % 10) + '0';
 	if (n < 0)
 		str[0] = '-';
 	return (str);

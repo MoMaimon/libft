@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   ft_split.c                                        :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: mabd-elh <mabd-elh@student.42amman.com>   #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/09/27 13:52:21 by mabd-elh         #+#    #+#              */
-/*   Updated: 2026/09/28 16:48:39 by mabd-elh        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabd-elh <mabd-elh@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/27 13:52:21 by mabd-elh          #+#    #+#             */
+/*   Updated: 2026/09/29 02:05:28 by mabd-elh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ static char	*get_word(char *s, char c)
 		len = ft_strlen(s) + 1;
 	str = malloc(len * sizeof(char));
 	if (!str)
-	{
-		free(str);
-		return (0);
-	}
+		return (NULL);
 	ft_strlcpy(str, s, len);
 	return (str);
 }
@@ -104,18 +101,20 @@ char	**ft_split(char const *s, char c)
 	set[0] = c;
 	set[1] = '\0';
 	trimmed_str = ft_strtrim(s, set);
+	if (!trimmed_str)
+		return (NULL);
 	words = count_words(trimmed_str, c);
 	arr = malloc((words + 1) * sizeof(char *));
 	if (!arr)
 	{
-		free(arr);
-		return (0);
+		free(trimmed_str);
+		return (NULL);
 	}
 	if (!make_arr(arr, trimmed_str, c))
 	{
 		free_all(arr);
 		free(trimmed_str);
-		return (0);
+		return (NULL);
 	}
 	free(trimmed_str);
 	return (arr);
